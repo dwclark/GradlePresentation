@@ -1,0 +1,16 @@
+subprojects {
+  
+  apply plugin: 'groovy'
+  
+  repositories {
+    mavenCentral()
+  }
+  
+  dependencies {
+    compile 'org.codehaus.groovy:groovy:2.2.2'
+  }
+
+  task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+  }
+}

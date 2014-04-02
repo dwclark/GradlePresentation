@@ -1,0 +1,8 @@
+dependencies {
+  compile project(':transformations')
+}
+
+task('run-app', dependsOn: 'compileGroovy', type: JavaExec) {
+  main = 'org.dfw2gug.Noisy'
+  classpath = sourceSets.main.runtimeClasspath
+}
