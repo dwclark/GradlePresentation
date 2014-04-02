@@ -1,0 +1,29 @@
+//Defines the task, since there is no type given
+//will be of type org.gradle.api.DefaultTask
+//Note, the body of the closure defines what should happen
+//at configuration, so this will execute before anything
+//else since the order of gradle execution is:
+//1) Initialization: Initializes the project, this is critical
+//for multi-project builds, gradle needs to know which projects to build
+//2) Configuration: All tasks are configured so that gradle can know
+//which tasks to execute and to build a DAG of the task ordering
+//3) Execution: Execute the tasks in order
+task theTask {
+  println "Should be configuration phase"
+}
+
+//The default task maintains a list of closures to execute.
+//The doLast method puts this closure at the end of the list.
+theTask.doLast {
+  println "Executing last phase"
+}
+
+//The doFirst method puts this closure at the front of the list.
+theTask.doFirst {
+  println "Executing first phase"
+}
+
+//<< is a shortcut for doLast
+theTask << {
+  println "Or maybe I'm the last"
+}
